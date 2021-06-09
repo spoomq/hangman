@@ -1,0 +1,116 @@
+<!doctype html>
+<head>
+  <title>hangman</title>
+
+  <style>
+    .container {
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class='container'>
+    <canvas id='hangman' width='400' height='400'></canvas>
+  </div>
+
+  <p id='board'></p>
+  <p id='hint'></p>
+  
+  <input id='guess' type='text' placeholder='Enter Your Guess...' onfocus='this.value=""'>
+  <button type='button' onclick='getInputVal();'>Submit</button>
+  <button id='draw'>Draw</button>
+ 
+  <p id='win'></p>
+
+  <script>
+
+    function getInputVal() {
+          var guess = document.getElementById('guess').value;
+          server.push(guess=guess);
+    }
+
+    const canvas = document.getElementById('hangman');
+    const context = canvas.getContext('2d');
+    Draw = (part) => {
+      switch (part) {
+        case 'gallow':
+          context.strokeStyle = '#000';
+          context.lineWidth = 4;
+          context.beginPath();
+          context.moveTo(155, 225);
+          context.lineTo(5, 225);
+          context.moveTo(25, 225);
+          context.lineTo(25, 5);
+          context.lineTo(100, 5);
+          context.lineTo(100, 25);
+          context.stroke();
+          break;
+        case 'head':
+          context.lineWidth = 2;
+          context.beginPath();
+          context.arc(100, 50, 25, 0, Math.PI*2, true);
+          context.closePath();
+          context.stroke();
+          break;
+        case 'body':
+          context.beginPath();
+          context.moveTo(100, 75);
+          context.lineTo(100, 140);
+          context.stroke();
+          break;
+        case 'rightArm':
+          context.beginPath();
+          context.moveTo(100, 85);
+          context.lineTo(60, 100);
+          context.stroke();
+          break;
+        case 'leftArm':
+          context.beginPath();
+          context.moveTo(100, 85);
+          context.lineTo(140, 100);
+          context.stroke();
+          break;
+        case 'rightLeg':
+          context.beginPath();
+          context.moveTo(100, 140);
+          context.lineTo(80, 190);
+          context.stroke();
+          break;
+        case 'leftLeg':
+          context.beginPath();
+          context.moveTo(100, 140);
+          context.lineTo(125, 190);
+          context.stroke();
+          break;
+        }
+    }
+
+    const main = [
+      'gallow'
+    ]
+
+    const draws = [
+      'head',
+      'body',
+      'rightArm',
+      'leftArm',
+      'rightLeg',
+      'leftLeg'
+    ]
+
+    Draw(main[0]);
+
+    var i = 0;
+    const draw = document.getElementById('draw');
+    draw.addEventListener('click', function() {
+          Draw(draws[i++])
+          if (undefined === draws[i]) {
+            this.disabled = true;
+            document.getElementById('win').innerHTML = 'You Lose!';
+          }
+    });
+
+  </script>
+</body>
