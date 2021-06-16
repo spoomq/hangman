@@ -28,7 +28,7 @@ class State:
     try: 
         hint = response['results'][0]['definition']
     except KeyError:
-        hint = 'This word has no hint, good luck!'
+        hint = 'This word has no definition, good luck!'
 
     #word = [l for l in response[:2] + response[2:]]
     #hint = 'an adjective for hangman'
@@ -50,7 +50,7 @@ class State:
     @jsf.task
     def play(self):
         while self.board != self.word:
-            self.js.dom.board.innerHTML = self.board
+            self.js.dom.board.innerHTML = ' '.join(map(str, self.board))
             self.js.dom.hint.innerHTML = self.hint
         else:
             self.js.dom.win.innerHTML = 'You solved it!'
