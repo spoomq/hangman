@@ -1,16 +1,17 @@
-#hangman
+hangman
 ---
-hangman is a [weird game](https://youtu.be/le5uGqHKll8).
+hangman is a [weird game](https://youtu.be/le5uGqHKll8)
 
 usage
 ---
-this uses WordsAPI so first get RapidAPI key and make `.env` file
+this uses WordsAPI so first get RapidAPI key then make `.env` file
 ```
 X-RAPIDAPI-KEY= #your RapidAPI key
 ```
 
-i use Flask so webserver runs on localhost:5000
+and i use Flask so webserver runs on localhost:5000
 ```
+pipenv install
 pipenv run python3 play.py
 ```
 
