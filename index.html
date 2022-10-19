@@ -9,9 +9,7 @@
     <canvas id='hangman' width='200' height='250'></canvas>
 
     <p>start</p>
-
-    <button id='next'>Next</button>
-    <button id='reset'>Reset</button>
+    <p id='step' style='display: none;'>wrong</p>
 
     <form>
       <input type='text'
@@ -95,29 +93,20 @@
       }
 
       const draws = [
-         'gallows',
-         'head',
-         'body',
-         'rightArm',
-         'leftArm',
-         'rightLeg',
-         'leftLeg',
+        null,
+        'gallows',
+        'head',
+        'body',
+        'rightArm',
+        'leftArm',
+        'rightLeg',
+        'leftLeg',
       ]
 
-      var step = 0;
-
-      const next = document.getElementById('next')
-
-      next.addEventListener('click', function() {
-        Draw(draws[step++])
-        if (undefined === draws[step]) this.disabled = true;
-      });
-
-      document.getElementById('reset').addEventListener('click', function() {
-        clearCanvas()
-        step = 0
-        next.disabled = false
-      })
+      let s = document.getElementById('step');
+      for (let i=1; i<=parseInt(s.textContent); i++) {
+        Draw(draws[i]);
+      }
 
     </script>
   </body>

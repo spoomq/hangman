@@ -6,8 +6,6 @@ usage
 ---
 this uses WordsAPI so first get RapidAPI key and make `.env` file
 ```
-vim .env
-#then...
 X-RAPIDAPI-KEY= #your RapidAPI key
 ```
 
@@ -18,8 +16,9 @@ pipenv run python3 play.py
 
 todo
 ---
-* auto draw hangman when wrong
-* allow wordlist
+* ~~auto draw hangman when wrong~~
 * add letter tracker
+* add "Play Again"
+* allow wordlist
 * make pretty
 
